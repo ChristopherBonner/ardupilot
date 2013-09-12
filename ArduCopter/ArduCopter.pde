@@ -1,5 +1,5 @@
 /// -*- tab-width: 4; Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil -*-
-//cheeseburger
+//cheeseburger stuff
 #define THISFIRMWARE "ArduCopter V3.0.1"
 /*
  *  ArduCopter Version 3.0
