@@ -16,7 +16,7 @@
 #define AP_MOTORS_HELI_SPEED_DIGITAL_SERVOS 125 // update rate for digital servos
 #define AP_MOTORS_HELI_SPEED_ANALOG_SERVOS 125  // update rate for analog servos
 
-#define AP_MOTORS_HELI_NUM_SWASHPLATE_SERVOS 3
+#define AP_MOTORS_HELI_NUM_SWASHPLATE_SERVOS 4 // AT-6100 Specific 4 Servo swashplate
 
 // tail servo uses channel 7
 #define AP_MOTORS_HELI_EXT_GYRO CH_7
