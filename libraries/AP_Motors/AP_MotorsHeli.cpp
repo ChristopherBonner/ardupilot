@@ -349,23 +349,28 @@ void AP_MotorsHeli::reset_swash()
     _servo_2->radio_max = 2000;
     _servo_3->radio_min = 1000;
     _servo_3->radio_max = 2000;
+    _servo_6->radio_min = 1000;
+    _servo_6->radio_max = 2000;
 
     if( swash_type == AP_MOTORS_HELI_SWASH_CCPM ) {                     //CCPM Swashplate, perform servo control mixing
 
         // roll factors
-        _rollFactor[CH_1] = cosf(radians(servo1_pos + 90 - phase_angle));
-        _rollFactor[CH_2] = cosf(radians(servo2_pos + 90 - phase_angle));
-        _rollFactor[CH_3] = cosf(radians(servo3_pos + 90 - phase_angle));
+        _rollFactor[CH_1] = 0;
+        _rollFactor[CH_2] = 1;
+        _rollFactor[CH_3] = 0;
+        _rollFactor[CH_6] = -1;
 
         // pitch factors
-        _pitchFactor[CH_1] = cosf(radians(servo1_pos - phase_angle));
-        _pitchFactor[CH_2] = cosf(radians(servo2_pos - phase_angle));
-        _pitchFactor[CH_3] = cosf(radians(servo3_pos - phase_angle));
+        _pitchFactor[CH_1] = 1;
+        _pitchFactor[CH_2] = 0;
+        _pitchFactor[CH_3] = -1;
+        _pitchFactor[CH_6] = 0;
 
         // collective factors
         _collectiveFactor[CH_1] = 1;
         _collectiveFactor[CH_2] = 1;
         _collectiveFactor[CH_3] = 1;
+        _collectiveFactor[CH_6] = 1;
 
     }else{                                                                      //H1 Swashplate, keep servo outputs seperated
 
