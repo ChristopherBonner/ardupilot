@@ -35,7 +35,7 @@ const AP_Param::GroupInfo AP_MotorsHeli::var_info[] PROGMEM = {
     // @Units: Degrees
     // @User: Standard
     // @Increment: 1
-    AP_GROUPINFO("SV1_POS", 1,      AP_MotorsHeli,  servo1_pos, -60),
+    AP_GROUPINFO("SV1_POS", 1,      AP_MotorsHeli,  servo1_pos, 0),
 
     // @Param: SV2_POS
     // @DisplayName: Servo 2 Position
@@ -44,7 +44,7 @@ const AP_Param::GroupInfo AP_MotorsHeli::var_info[] PROGMEM = {
     // @Units: Degrees
     // @User: Standard
     // @Increment: 1
-    AP_GROUPINFO("SV2_POS", 2,      AP_MotorsHeli,  servo2_pos,  60),
+    AP_GROUPINFO("SV2_POS", 2,      AP_MotorsHeli,  servo2_pos,  90),
 
     // @Param: SV3_POS
     // @DisplayName: Servo 3 Position
@@ -192,6 +192,15 @@ const AP_Param::GroupInfo AP_MotorsHeli::var_info[] PROGMEM = {
     // @Increment: 1
     // @User: Standard
     AP_GROUPINFO("STAB_COL_MAX", 20, AP_MotorsHeli, stab_col_max, 100),
+
+    // @Param: SV3_POS
+    // @DisplayName: Servo 3 Position
+    // @Description: This is the angular location of swash servo #4.
+    // @Range: -180 180
+    // @Units: Degrees
+    // @User: Standard
+    // @Increment: 1
+    AP_GROUPINFO("SV6_POS", 21,      AP_MotorsHeli,  servo6_pos,  -90),
 
     AP_GROUPEND
 };
