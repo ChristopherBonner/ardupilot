@@ -284,35 +284,41 @@ void AP_MotorsHeli::output_test()
     // Send minimum values to all motors
     output_min();
 
-    // servo 1
+    // servo 1 & 3
     for( i=0; i<5; i++ ) {
         hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_1], _servo_1->radio_trim + 100);
+        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_1->radio_trim - 100);
         hal.scheduler->delay(300);
         hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_1], _servo_1->radio_trim - 100);
+        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_1->radio_trim + 100);
         hal.scheduler->delay(300);
         hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_1], _servo_1->radio_trim + 0);
+        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_1->radio_trim - 0);
         hal.scheduler->delay(300);
     }
 
-    // servo 2
+    // servo 2 & 6
     for( i=0; i<5; i++ ) {
         hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_2], _servo_2->radio_trim + 100);
+        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_6], _servo_1->radio_trim - 100);
         hal.scheduler->delay(300);
         hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_2], _servo_2->radio_trim - 100);
+        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_6], _servo_1->radio_trim + 100);
         hal.scheduler->delay(300);
         hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_2], _servo_2->radio_trim + 0);
+        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_6], _servo_1->radio_trim - 0);
         hal.scheduler->delay(300);
     }
 
     // servo 3
-    for( i=0; i<5; i++ ) {
-        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_trim + 100);
-        hal.scheduler->delay(300);
-        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_trim - 100);
-        hal.scheduler->delay(300);
-        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_trim + 0);
-        hal.scheduler->delay(300);
-    }
+//    for( i=0; i<5; i++ ) {
+//        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_trim + 100);
+//        hal.scheduler->delay(300);
+//        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_trim - 100);
+//        hal.scheduler->delay(300);
+//        hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_trim + 0);
+ //       hal.scheduler->delay(300);
+ //   }
 
     // external gyro
     if( ext_gyro_enabled ) {
