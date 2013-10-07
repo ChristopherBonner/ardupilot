@@ -223,7 +223,8 @@ void AP_MotorsHeli::set_update_rate( uint16_t speed_hz )
 	    1U << _motor_to_channel_map[AP_MOTORS_MOT_1] |
 	    1U << _motor_to_channel_map[AP_MOTORS_MOT_2] |
 	    1U << _motor_to_channel_map[AP_MOTORS_MOT_3] |
-	    1U << _motor_to_channel_map[AP_MOTORS_MOT_4];
+	    1U << _motor_to_channel_map[AP_MOTORS_MOT_4] |
+	    1U << _motor_to_channel_map[AP_MOTORS_MOT_6];
     hal.rcout->set_freq(mask, _speed_hz);
 }
 
@@ -234,6 +235,7 @@ void AP_MotorsHeli::enable()
     hal.rcout->enable_ch(_motor_to_channel_map[AP_MOTORS_MOT_1]);            // swash servo 1
     hal.rcout->enable_ch(_motor_to_channel_map[AP_MOTORS_MOT_2]);            // swash servo 2
     hal.rcout->enable_ch(_motor_to_channel_map[AP_MOTORS_MOT_3]);            // swash servo 3
+    hal.rcout->enable_ch(_motor_to_channel_map[AP_MOTORS_MOT_6]);            // swash servo 4
     hal.rcout->enable_ch(_motor_to_channel_map[AP_MOTORS_MOT_4]);            // yaw
     hal.rcout->enable_ch(AP_MOTORS_HELI_EXT_GYRO);           // for external gyro
     hal.rcout->enable_ch(AP_MOTORS_HELI_EXT_RSC);            // for external RSC
