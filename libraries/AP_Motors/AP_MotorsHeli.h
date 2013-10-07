@@ -52,12 +52,14 @@ public:
                    RC_Channel*      swash_servo_1,
                    RC_Channel*      swash_servo_2,
                    RC_Channel*      swash_servo_3,
+                   RC_Channel*		swash_servo_4, // 4-servo CCPM
                    RC_Channel*      yaw_servo,
                    uint16_t         speed_hz = AP_MOTORS_HELI_SPEED_DEFAULT) :
         AP_Motors(rc_roll, rc_pitch, rc_throttle, rc_yaw, speed_hz),
         _servo_1(swash_servo_1),
         _servo_2(swash_servo_2),
         _servo_3(swash_servo_3),
+        _servo_6(swash_servo_4),  //4-servo CCPM
         _servo_4(yaw_servo),
         _rc_8(rc_8)
     {
@@ -75,12 +77,14 @@ public:
     RC_Channel      *_servo_1;
     RC_Channel      *_servo_2;
     RC_Channel      *_servo_3;
+    RC_Channel		*_servo_6;	// 4 servo CCPM
     RC_Channel  *_servo_4;
     RC_Channel  *_rc_8;
     AP_Int8 swash_type;
     AP_Int16 servo1_pos;
     AP_Int16 servo2_pos;
     AP_Int16 servo3_pos;
+    AP_Int16 servo6_pos;
     AP_Int16 collective_min;
     AP_Int16 collective_max;
     AP_Int16 collective_mid;
