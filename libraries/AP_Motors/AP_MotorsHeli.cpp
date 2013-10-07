@@ -409,6 +409,7 @@ void AP_MotorsHeli::init_swash()
     _servo_2->set_range(0,1000);
     _servo_3->set_range(0,1000);
     _servo_4->set_angle(4500);
+    _servo_6->set_range(0,1000);
 
     // ensure _coll values are reasonable
     if( collective_min >= collective_max ) {
@@ -429,20 +430,23 @@ void AP_MotorsHeli::init_swash()
 
     if( swash_type == AP_MOTORS_HELI_SWASH_CCPM ) {                     //CCPM Swashplate, perform control mixing
 
-        // roll factors
-        _rollFactor[CH_1] = cosf(radians(servo1_pos + 90 - phase_angle));
-        _rollFactor[CH_2] = cosf(radians(servo2_pos + 90 - phase_angle));
-        _rollFactor[CH_3] = cosf(radians(servo3_pos + 90 - phase_angle));
+    	// roll factors
+    	        _rollFactor[CH_1] = 0;
+    	        _rollFactor[CH_2] = 1;
+    	        _rollFactor[CH_3] = 0;
+    	        _rollFactor[CH_6] = -1;
 
-        // pitch factors
-        _pitchFactor[CH_1] = cosf(radians(servo1_pos - phase_angle));
-        _pitchFactor[CH_2] = cosf(radians(servo2_pos - phase_angle));
-        _pitchFactor[CH_3] = cosf(radians(servo3_pos - phase_angle));
+    	        // pitch factors
+    	        _pitchFactor[CH_1] = 1;
+    	        _pitchFactor[CH_2] = 0;
+    	        _pitchFactor[CH_3] = -1;
+    	        _pitchFactor[CH_6] = 0;
 
-        // collective factors
-        _collectiveFactor[CH_1] = 1;
-        _collectiveFactor[CH_2] = 1;
-        _collectiveFactor[CH_3] = 1;
+    	        // collective factors
+    	        _collectiveFactor[CH_1] = 1;
+    	        _collectiveFactor[CH_2] = 1;
+    	        _collectiveFactor[CH_3] = 1;
+    	        _collectiveFactor[CH_6] = 1;
 
     }else{              //H1 Swashplate, keep servo outputs seperated
 
@@ -469,6 +473,8 @@ void AP_MotorsHeli::init_swash()
     _servo_2->radio_max = 2000;
     _servo_3->radio_min = 1000;
     _servo_3->radio_max = 2000;
+    _servo_6->radio_min = 1000;
+    _servo_6->radio_max = 2000;
 
     // mark swash as initialised
     _swash_initialised = true;
