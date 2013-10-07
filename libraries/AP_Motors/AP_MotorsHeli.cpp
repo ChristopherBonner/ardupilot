@@ -539,24 +539,28 @@ void AP_MotorsHeli::move_swash(int16_t roll_out, int16_t pitch_out, int16_t coll
     }
     _servo_3->servo_out = (_rollFactor[CH_3] * roll_out + _pitchFactor[CH_3] * pitch_out)/10 + _collectiveFactor[CH_3] * coll_out_scaled + (_servo_3->radio_trim-1500);
     _servo_4->servo_out = yaw_out + yaw_offset;
+    _servo_6->servo_out = (_rollFactor[CH_6] * roll_out + _pitchFactor[CH_6] * pitch_out)/10 + _collectiveFactor[CH_6] * coll_out_scaled + (_servo_6->radio_trim-1500);
 
     // use servo_out to calculate pwm_out and radio_out
     _servo_1->calc_pwm();
     _servo_2->calc_pwm();
     _servo_3->calc_pwm();
     _servo_4->calc_pwm();
+    _servo_6->calc_pwm();
 
     // actually move the servos
     hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_1], _servo_1->radio_out);
     hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_2], _servo_2->radio_out);
     hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_3], _servo_3->radio_out);
     hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_4], _servo_4->radio_out);
+    hal.rcout->write(_motor_to_channel_map[AP_MOTORS_MOT_6], _servo_6->radio_out);
 
     // to be compatible with other frame types
     motor_out[AP_MOTORS_MOT_1] = _servo_1->radio_out;
     motor_out[AP_MOTORS_MOT_2] = _servo_2->radio_out;
     motor_out[AP_MOTORS_MOT_3] = _servo_3->radio_out;
     motor_out[AP_MOTORS_MOT_4] = _servo_4->radio_out;
+    motor_out[AP_MOTORS_MOT_6] = _servo_6->radio_out;
 
     // output gyro value
     if( ext_gyro_enabled ) {
