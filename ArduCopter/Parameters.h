@@ -418,6 +418,7 @@ public:
         heli_servo_2        (CH_2),
         heli_servo_3        (CH_3),
         heli_servo_4        (CH_4),
+        heli_servo_6		(CH_6),
 #endif
 
         rc_1                (CH_1),
