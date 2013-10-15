@@ -460,6 +460,9 @@ const AP_Param::Info var_info[] PROGMEM = {
     // @Group: HS4_
     // @Path: ../libraries/RC_Channel/RC_Channel.cpp
     GGROUP(heli_servo_4,    "HS4_", RC_Channel),
+    // @Group: HS6_
+    // @Path: ../libraries/RC_Channel/RC_Channel.cpp
+    GGROUP(heli_servo_6,    "HS6_", RC_Channel),
 
     // @Param: RATE_PIT_FF
     // @DisplayName: Rate Pitch Feed Forward
